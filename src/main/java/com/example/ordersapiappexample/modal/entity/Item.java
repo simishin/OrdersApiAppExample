@@ -1,8 +1,16 @@
 package com.example.ordersapiappexample.modal.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "item_t")
 public class Item {//продукт
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
+    @Column
     private String itemName;
+    @Column
     private Long    itemArticle;
 
     public Item() {
@@ -13,6 +21,11 @@ public class Item {//продукт
 
     public Item(Integer id, String itemName, Long itemArticle) {
         this.id = id; //первичный ключ
+        this.itemName = itemName;
+        this.itemArticle = itemArticle;
+    }
+    public Item(String itemName, Long itemArticle) {
+        this.id = -1; //первичный ключ
         this.itemName = itemName;
         this.itemArticle = itemArticle;
     }

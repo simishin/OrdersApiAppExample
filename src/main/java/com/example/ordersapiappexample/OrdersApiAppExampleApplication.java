@@ -11,3 +11,7 @@ public class OrdersApiAppExampleApplication {
     }
 
 }
+/**
+ * spring.jpa.hibernate.ddl-auto=update#spring.jpa.hibernate.ddl-auto=create-dropspring.datasource.url=jdbc:postgresql://localhost:5432/spring.datasource.username=spring.datasource.password=spring.datasource.driverClassName=org.postgresql.Driverspring.jpa.show-sql=true
+ *
+ */
