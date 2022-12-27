@@ -25,14 +25,15 @@ public class ItemController {
             return daoItem.findById(id);
         }
 
-    @GetMapping("/save")
+    @PostMapping ("/save")
     public Item save(@RequestParam String itemName, @RequestParam Long itemArticle){
         Item item = new Item(itemName,itemArticle);
         return daoItem.save(item);
     }
-    @PatchMapping("/update")
+    @PostMapping("/update")
     public Item update(@RequestParam Integer id, @RequestParam(required = false) String itemName,
                        @RequestParam(required = false) Long itemArticle ){
+        System.out.println("PostMapping(\"/update\")=>"+id);
         return  daoItem.update(new Item(id,itemName,itemArticle));
     }
 
