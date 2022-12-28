@@ -1,6 +1,7 @@
 package com.example.ordersapiappexample.modal.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "item_t")
@@ -12,6 +13,9 @@ public class Item {//продукт
     private String itemName;
     @Column
     private Long    itemArticle;
+
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    private Set<OrderItems> orderItem;
 
     public Item() {
         this.id = -1;
@@ -61,5 +65,13 @@ public class Item {//продукт
                 ", itemName='" + itemName + '\'' +
                 ", itemArticle=" + itemArticle +
                 '}';
+    }
+
+    public Set<OrderItems> getOrderItem() {
+        return orderItem;
+    }
+
+    public void setOrderItem(Set<OrderItems> orderItem) {
+        this.orderItem = orderItem;
     }
 }
