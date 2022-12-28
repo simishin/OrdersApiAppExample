@@ -4,3 +4,4 @@ import com.example.ordersapiappexample.modal.dao.IdaoBase;
 import com.example.ordersapiappexample.modal.entity.Order;
 
 public interface IdaoOrder extends IdaoBase<Order> {  }
+

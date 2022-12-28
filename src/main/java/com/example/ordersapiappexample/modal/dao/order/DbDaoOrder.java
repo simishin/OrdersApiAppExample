@@ -1,5 +1,6 @@
 package com.example.ordersapiappexample.modal.dao.order;
 
+
 import com.example.ordersapiappexample.modal.entity.Order;
 import com.example.ordersapiappexample.modal.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.Optional;
 
-public class DbDaoOrder  implements IdaoOrder {
+public class DbDaoOrder implements IdaoOrder {
     @Autowired
     private OrderRepository repository;
 
@@ -28,7 +29,7 @@ public class DbDaoOrder  implements IdaoOrder {
 
     @Override
     public Order update(Order item) {
-        if (! repository.findById(item.getId()).isPresent()){
+        if (!repository.findById(item.getId()).isPresent()) {
             return null;
         }
         return repository.save(item);
@@ -36,9 +37,10 @@ public class DbDaoOrder  implements IdaoOrder {
 
     @Override
     public Order delete(Integer id) {
-        Optional<Order> item =  repository.findById(id);
-        if (item.isPresent()) return null;
+        Optional<Order> item = repository.findById(id);
+        if (! item.isPresent()) return null;
         repository.deleteById(id);
         return item.get();
     }
+
 }

@@ -37,8 +37,9 @@ public class DbDaoOrderItem implements IdaoOrderItem {
     @Override
     public OrderItems delete(Integer id) {
         Optional<OrderItems> item =  repository.findById(id);
-        if (item.isPresent()) return null;
+        if (! item.isPresent()) return null;
         repository.deleteById(id);
         return item.get();
     }
+
 }

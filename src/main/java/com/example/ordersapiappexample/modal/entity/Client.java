@@ -18,6 +18,7 @@ public class Client {
     public Client() {
     }
 
+
     public Client(Integer id, String name) {
         this.id = id;
         this.name = name;
@@ -35,6 +36,7 @@ public class Client {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
+
 
     @Override
     public String toString() {

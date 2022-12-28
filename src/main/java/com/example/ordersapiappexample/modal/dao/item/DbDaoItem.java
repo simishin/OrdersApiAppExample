@@ -11,6 +11,7 @@ import java.util.Optional;
 //имплементация Dao для сущнисти
 @Service
 public class DbDaoItem implements IDaoItem{
+
     @Autowired
     private ItemRepository repository;
 
@@ -41,9 +42,11 @@ public class DbDaoItem implements IDaoItem{
 
     @Override
     public Item delete(Integer id) {
-        Optional<Item> item =  repository.findById(id);
-        if (item.isPresent()) return null;
+        Optional<Item> z = repository.findById(id);
+        if (! z.isPresent()) return null;
+
         repository.deleteById(id);
-        return item.get();
+        return z.get();
     }
+
 }

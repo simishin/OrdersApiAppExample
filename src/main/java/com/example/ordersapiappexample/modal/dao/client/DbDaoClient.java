@@ -38,7 +38,7 @@ public class DbDaoClient implements IdaoClient{
     @Override
     public Client delete(Integer id) {
         Optional<Client> item =  repository.findById(id);
-        if (item.isPresent()) return null;
+        if (! item.isPresent()) return null;
         repository.deleteById(id);
         return item.get();
     }

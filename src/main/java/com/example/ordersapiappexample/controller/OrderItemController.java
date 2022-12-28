@@ -20,7 +20,7 @@ public class OrderItemController {
     }
 
     @GetMapping("/get")
-    public Optional<OrderItems> findById(@RequestParam Integer id){
+    public Optional<OrderItems> findById(@RequestParam(defaultValue = "1") Integer id){
         return obj.findById(id);
     }
 
@@ -34,7 +34,7 @@ public class OrderItemController {
         return  obj.update(new OrderItems(id,quantity,null, null));
     }
 
-    @DeleteMapping("/del")
+    @PostMapping("/del")
     public OrderItems delete(@RequestParam Integer id){
         return obj.delete(id);
     }
