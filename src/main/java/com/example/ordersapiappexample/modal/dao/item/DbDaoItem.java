@@ -11,7 +11,6 @@ import java.util.Optional;
 //имплементация Dao для сущнисти
 @Service
 public class DbDaoItem implements IDaoItem{
-
     @Autowired
     private ItemRepository repository;
 
@@ -47,5 +46,4 @@ public class DbDaoItem implements IDaoItem{
         repository.deleteById(id);
         return item.get();
     }
-
 }

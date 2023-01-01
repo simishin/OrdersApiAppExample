@@ -37,6 +37,11 @@ public class ItemController {
         return  daoItem.update(new Item(id,itemName,itemArticle));
     }
 
+    @DeleteMapping("/del")
+    public Item delete(@RequestParam Integer id){
+        return daoItem.delete(id);
+    }
+
     @GetMapping("/ping")
     public String ping(){
        return "item pong";
