@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Client_t")
+@Table(name = "client_t")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,18 +16,19 @@ public class Client {
     private Set<Order> orders;
 
     public Client() {
-    }
-
-
-    public Client(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-        this.orders = null;
+        this(-1,"undefine");
     }
 
     public Client(String name) {
-       this(-1, name);
+        this(-1, name);
     }
+    public Client(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+//        this.orders = null;
+    }
+
+
 
     public Set<Order> getOrders() {
         return orders;

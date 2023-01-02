@@ -3,11 +3,13 @@ package com.example.ordersapiappexample.modal.dao.client;
 import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class DbDaoClient implements IdaoClient{
+@Service
+public class DbDaoClient implements IDaoClient {
 
     @Autowired
     private ClientRepository repository;
@@ -19,6 +21,7 @@ public class DbDaoClient implements IdaoClient{
 
     @Override
     public Optional<Client> findById(Integer id) {
+        System.out.println("+++++++ "+id);
         return repository.findById(id);
     }
 

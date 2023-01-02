@@ -4,10 +4,12 @@ package com.example.ordersapiappexample.modal.dao.order;
 import com.example.ordersapiappexample.modal.entity.Order;
 import com.example.ordersapiappexample.modal.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DbDaoOrder implements IdaoOrder {
     @Autowired
     private OrderRepository repository;

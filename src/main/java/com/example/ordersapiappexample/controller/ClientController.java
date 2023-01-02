@@ -1,7 +1,8 @@
 package com.example.ordersapiappexample.controller;
 
-import com.example.ordersapiappexample.modal.dao.client.IdaoClient;
+import com.example.ordersapiappexample.modal.dao.client.IDaoClient;
 import com.example.ordersapiappexample.modal.entity.Client;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/client") //префикс
 public class ClientController {
-//    @Autowired
-    private IdaoClient obj;
+    @Autowired
+    private IDaoClient obj;
 
     //получение всех объектов
     @GetMapping("/all")
@@ -20,7 +21,8 @@ public class ClientController {
     }
 
     @GetMapping("/get")
-    public Optional<Client> findById(@RequestParam Integer id){
+    public Optional<Client> findById(@RequestParam(defaultValue = "2") Integer id){
+
         return obj.findById(id);
     }
 
@@ -41,7 +43,8 @@ public class ClientController {
 
     @GetMapping("/ping")
     public String ping(){
-        return "item pong";
+        return "Client" +
+                " pong";
     }
 
 }

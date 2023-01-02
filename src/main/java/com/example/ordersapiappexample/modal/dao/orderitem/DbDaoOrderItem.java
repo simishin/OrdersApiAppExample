@@ -3,10 +3,12 @@ package com.example.ordersapiappexample.modal.dao.orderitem;
 import com.example.ordersapiappexample.modal.entity.OrderItems;
 import com.example.ordersapiappexample.modal.repository.OrderItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DbDaoOrderItem implements IdaoOrderItem {
     @Autowired
     private OrderItemsRepository repository;

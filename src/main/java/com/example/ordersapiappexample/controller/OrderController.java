@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/order") //префикс
 public class OrderController {
-//    @Autowired
+    @Autowired
     private IdaoOrder obj;
     @GetMapping("/all")
     public List<Order> all(){
