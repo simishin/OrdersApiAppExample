@@ -18,6 +18,24 @@ public class Client {
     public Client() {
     }
 
+    public Client(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+        this.orders = null;
+    }
+
+    public Client(String name) {
+       this(-1, name);
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public String toString() {
         return "Client{" +

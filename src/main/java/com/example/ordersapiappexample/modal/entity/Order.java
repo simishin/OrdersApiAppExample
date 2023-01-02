@@ -22,10 +22,18 @@ public class Order {
     public Order() {
     }
 
+    public Order(String descript) {
+        this(-1, descript, null);
+    }
+
     public Order(Integer id, String descript, Client client) {
         this.id = id;
         this.descript = descript;
         this.client = client;
+    }
+
+    public Order(Integer id, String descript) {
+        this(id, descript, null);
     }
 
     @Override

@@ -24,6 +24,13 @@ public class OrderItems {
     public OrderItems() {
     }
 
+    public OrderItems(Integer id, Integer quantity, Item item, Order order) {
+        this.id = id;
+        this.quantity = quantity;
+        this.item = item;
+        this.order = order;
+    }
+
     @Override
     public String toString() {
         return "OrderItem{" +
