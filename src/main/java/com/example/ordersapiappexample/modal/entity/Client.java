@@ -12,8 +12,17 @@ public class Client {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client")
     private Set<Order> orders;
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
 
     public Client() {
         this(-1,"undefine");
@@ -25,18 +34,9 @@ public class Client {
     public Client(Integer id, String name) {
         this.id = id;
         this.name = name;
-//        this.orders = null;
+        this.orders = null;
     }
 
-
-
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
 
 
     @Override

@@ -18,22 +18,18 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItems> orderItem;
 
-
     public Order() {
     }
-
 
     public Order(String descript) {
         this(-1, descript, null);
     }
-
 
     public Order(Integer id, String descript, Client client) {
         this.id = id;
         this.descript = descript;
         this.client = client;
     }
-
 
     public Order(Integer id, String descript) {
         this(id, descript, null);
@@ -47,7 +43,6 @@ public class Order {
                 ", client=" + client +
                 '}';
     }
-
     public Integer getId() {
         return id;
     }
@@ -75,7 +70,6 @@ public class Order {
     public Set<OrderItems> getOrderItem() {
         return orderItem;
     }
-
     public void setOrderItem(Set<OrderItems> orderItem) {
         this.orderItem = orderItem;
     }

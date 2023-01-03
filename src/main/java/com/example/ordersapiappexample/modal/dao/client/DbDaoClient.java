@@ -23,6 +23,7 @@ public class DbDaoClient implements IDaoClient {
     public Optional<Client> findById(Integer id) {
         System.out.println("+++++++ "+id);
         return repository.findById(id);
+//        return repository.findById(id);
     }
 
     @Override
