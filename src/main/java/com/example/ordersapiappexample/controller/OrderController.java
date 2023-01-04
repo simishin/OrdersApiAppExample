@@ -43,5 +43,8 @@ public class OrderController {
     public String ping(){
         return "Order pong";
     }
-
+//    @PutMapping("/ping")
+//    public String ping(){
+//        return "Order pong ****";
+//    }
 }

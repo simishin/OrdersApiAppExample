@@ -20,28 +20,34 @@ public class ItemController {
         return  obj.findAll();
     }
 
-    @GetMapping("/get")
-        public Optional<Item> findById(@RequestParam(defaultValue = "-1") Integer id){
-            return obj.findById(id);
-        }
+    @GetMapping("/{id:\\d+}")
+    public Optional<Item> findById(@PathVariable Integer id){
+        return obj.findById(id);
+    }
+//    @GetMapping("/get")
+//        public Optional<Item> findById(@RequestParam(defaultValue = "-1") Integer id){
+//        return obj.findById(id);
+//        }
 
-    @PostMapping ("/save")
+    @PostMapping ("/new")
+//    @PostMapping ("/save")
     public Item update(
                        @RequestParam(required = false) String itemName,
                        @RequestParam(defaultValue = "0") Long itemArticle,
                        @RequestParam(defaultValue = "1") Float price ){
         return  obj.update(new Item(-1, itemName, itemArticle, price));
     }
-    @PostMapping("/update")
-    public Item update(@RequestParam(defaultValue = "-1") Integer id,
+//    @PostMapping("/update")
+    @PostMapping("/{id:\\d+}")
+    public Item update(@PathVariable  Integer id,
                        @RequestParam(defaultValue = "") String itemName,
                        @RequestParam(defaultValue = "0") Long itemArticle,
                        @RequestParam(defaultValue = "0") Float price ){
         return  obj.update(new Item(id, itemName, itemArticle, price));
     }
 
-    @DeleteMapping("/del")
-    public Item delete(@RequestParam Integer id){
+    @DeleteMapping("/{id:\\d+}")
+    public Item delete(@PathVariable Integer id){
         return obj.delete(id);
     }
 

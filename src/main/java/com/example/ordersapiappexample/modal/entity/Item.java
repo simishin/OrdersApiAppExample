@@ -22,11 +22,6 @@ public class Item {//продукт
     public Item() {
         this(-1,"undefine",-1L, 0F); }
 
-    public Item(Integer id, String itemName, Long itemArticle) {
-        this.id = id; //первичный ключ
-        this.itemName = itemName;
-        this.itemArticle = itemArticle;
-    }
     public Item(Integer id, String itemName, Long itemArticle, Float price) {
         this.id = id;
         this.itemName = itemName;
@@ -34,16 +29,10 @@ public class Item {//продукт
         this.price = price;
         this.orderItem = new HashSet<OrderItems>();
     }
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
     public String getItemName() {return itemName;}
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
+    public void setItemName(String itemName) { this.itemName = itemName; }
     public Long getItemArticle() {return itemArticle;}
     public void setItemArticle(Long itemArticle) {
         this.itemArticle = itemArticle;
@@ -71,5 +60,4 @@ public class Item {//продукт
                 ", itemArticle=" + itemArticle +
                 '}';
     }
-
-}
+}//class Item
