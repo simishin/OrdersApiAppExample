@@ -13,11 +13,11 @@ import java.util.Optional;
 
 @Service
 public class DbDaoClient implements IDaoClient {
-    @Autowired
-    private ClientRepository repository;
-
-    public ClientRepository getRepository() {
-        return repository;
+    private final ClientRepository repository;
+    public  static ClientRepository xxx;
+    public DbDaoClient(ClientRepository repository) {
+        this.repository = repository;
+        xxx = repository;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.ordersapiappexample.modal.dao.order;
 
 
+import com.example.ordersapiappexample.modal.dao.client.DbDaoClient;
 import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Order;
 import com.example.ordersapiappexample.modal.repository.OrderRepository;
@@ -27,18 +28,25 @@ public class DbDaoOrder implements IdaoOrder {
 
     @Override
     public Order save(Order item, Integer idClient) {
-//        St
-
+        Optional<Client> cx = DbDaoClient.xxx.findById(idClient);
+        System.out.println("************\n"+ cx);
+        if (cx.isPresent()) { //есть такой
+            item.setClient(cx.get());
+            return repository.save(item);
+        }
         return null;
     }
 
     @Override
-    public Order save(Order item) {
-
-        return repository.save(item);
+    public Order update(Order item, Integer idClient) {
+        System.out.println("Order update "+item+" **** "+idClient);
+        return null;
     }
 
-    @Override
+    @Override // НЕ используется
+    public Order save(Order item) {  return repository.save(item);  }
+
+    @Override // НЕ используется
     public Order update(Order item) {
         if (!repository.findById(item.getId()).isPresent()) {
             return null;

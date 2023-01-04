@@ -30,16 +30,13 @@ public class OrderController {
     @PostMapping("/save")
     public Order save(@RequestParam(defaultValue = "Заказ ***") String descript,
                       @RequestParam(required = false) Integer idClient){
-//        DbDaoClient.
-
-        return obj.save(new Order(descript, idClient));
+        return obj.save(new Order(descript), idClient);
     }
     @PostMapping("/update")
     public Order update(@RequestParam(defaultValue = "-1") Integer id,
-                        @RequestParam(required = false) String descript,
-                       @RequestParam(required = false) Long itemArticle ){
-        System.out.println("PostMapping(\"/update\")=>"+id);
-        return  obj.update(new Order(id,descript));
+                        @RequestParam(defaultValue = "") String descript,
+                       @RequestParam(defaultValue = "-1") Integer idClient ){
+        return  obj.update(new Order(id,descript),idClient);
     }
 
     @DeleteMapping("/del")

@@ -21,7 +21,7 @@ public class Order {
 
     public Order() {this(-1,"undefine", null);    }
 
-    public Order(String descript, Integer idClient) {
+    public Order(String descript) {
         this(-1, descript, null);
     }
 
