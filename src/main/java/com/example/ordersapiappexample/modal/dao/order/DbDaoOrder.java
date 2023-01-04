@@ -1,6 +1,7 @@
 package com.example.ordersapiappexample.modal.dao.order;
 
 
+import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Order;
 import com.example.ordersapiappexample.modal.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,15 @@ public class DbDaoOrder implements IdaoOrder {
     }
 
     @Override
+    public Order save(Order item, Integer idClient) {
+//        St
+
+        return null;
+    }
+
+    @Override
     public Order save(Order item) {
+
         return repository.save(item);
     }
 

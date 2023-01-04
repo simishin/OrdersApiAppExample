@@ -1,7 +1,9 @@
 package com.example.ordersapiappexample.controller;
 
+import com.example.ordersapiappexample.modal.dao.client.DbDaoClient;
 import com.example.ordersapiappexample.modal.dao.item.IDaoItem;
 import com.example.ordersapiappexample.modal.dao.order.IdaoOrder;
+import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Item;
 import com.example.ordersapiappexample.modal.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,20 @@ public class OrderController {
     }
 
     @GetMapping("/get")
-    public Optional<Order> findById(@RequestParam Integer id){
+    public Optional<Order> findById(@RequestParam(defaultValue = "2") Integer id){
         return obj.findById(id);
     }
 
     @PostMapping("/save")
-    public Order save(@RequestParam String descript){
-        return obj.save(new Order(descript));
+    public Order save(@RequestParam(defaultValue = "Заказ ***") String descript,
+                      @RequestParam(required = false) Integer idClient){
+//        DbDaoClient.
+
+        return obj.save(new Order(descript, idClient));
     }
     @PostMapping("/update")
-    public Order update(@RequestParam Integer id, @RequestParam(required = false) String descript,
+    public Order update(@RequestParam(defaultValue = "-1") Integer id,
+                        @RequestParam(required = false) String descript,
                        @RequestParam(required = false) Long itemArticle ){
         System.out.println("PostMapping(\"/update\")=>"+id);
         return  obj.update(new Order(id,descript));
@@ -43,7 +49,7 @@ public class OrderController {
 
     @GetMapping("/ping")
     public String ping(){
-        return "item pong";
+        return "Order pong";
     }
 
 }

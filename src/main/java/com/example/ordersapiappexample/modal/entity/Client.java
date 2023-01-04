@@ -34,9 +34,7 @@ public class Client {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
-    public Client() {
-        this(-1,"undefine");
-    }
+    public Client() { this(-1,"undefine");  }
     public Client(String name) {
         this(-1, name);
     }

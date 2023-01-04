@@ -15,6 +15,11 @@ import java.util.Optional;
 public class DbDaoClient implements IDaoClient {
     @Autowired
     private ClientRepository repository;
+
+    public ClientRepository getRepository() {
+        return repository;
+    }
+
     @Override
     public List<Client> findAll() {
         return (List<Client>) repository.findAll();

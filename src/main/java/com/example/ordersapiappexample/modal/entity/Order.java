@@ -1,6 +1,7 @@
 package com.example.ordersapiappexample.modal.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,10 +19,9 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItems> orderItem;
 
-    public Order() {
-    }
+    public Order() {this(-1,"undefine", null);    }
 
-    public Order(String descript) {
+    public Order(String descript, Integer idClient) {
         this(-1, descript, null);
     }
 
@@ -29,6 +29,7 @@ public class Order {
         this.id = id;
         this.descript = descript;
         this.client = client;
+        this.orderItem = new HashSet<OrderItems>();
     }
 
     public Order(Integer id, String descript) {
