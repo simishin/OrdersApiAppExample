@@ -25,7 +25,11 @@ public class DbDaoItem implements IDaoItem{
 
     @Override
     public Optional<Item> findById(Integer id) {
+        if (id<0) return null;
         return repository.findById(id);
+    }
+    public static boolean isPres(Integer id){
+        return xxx.findById(id).isPresent();
     }
 
     @Override
@@ -34,13 +38,16 @@ public class DbDaoItem implements IDaoItem{
     }
 
     @Override
-    public Item update(Item item) {
-        if (repository.findById(item.getId()).isEmpty()){
-            System.out.println("DbDaoItem=>isPresent()");
-            return null;
+    public Item update(Item elm) {
+        if (repository.findById(elm.getId()).isPresent()){
+           if (elm.getItemName().isBlank())
+               elm.setItemName(repository.findById(elm.getId()).get().getItemName());
+           if (elm.getItemArticle()==0)
+               elm.setItemArticle(repository.findById(elm.getId()).get().getItemArticle());
+           if (elm.getPrice()==0)
+               elm.setPrice(repository.findById(elm.getId()).get().getPrice());
         }
-        System.out.println("DbDaoItem=>save");
-        return repository.save(item);
+        return repository.save(elm);
     }
 
     @Override

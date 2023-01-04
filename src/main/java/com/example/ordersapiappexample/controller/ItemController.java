@@ -21,23 +21,26 @@ public class ItemController {
     }
 
     @GetMapping("/get")
-        public Optional<Item> findById(@RequestParam(defaultValue = "2") Integer id){
+        public Optional<Item> findById(@RequestParam(defaultValue = "-1") Integer id){
             return obj.findById(id);
         }
 
     @PostMapping ("/save")
-    public Item save(@RequestParam String itemName, @RequestParam Long itemArticle){
-        Item item = new Item(itemName,itemArticle);
-        return obj.save(item);
+    public Item update(
+                       @RequestParam(required = false) String itemName,
+                       @RequestParam(defaultValue = "0") Long itemArticle,
+                       @RequestParam(defaultValue = "1") Float price ){
+        return  obj.update(new Item(-1, itemName, itemArticle, price));
     }
     @PostMapping("/update")
-    public Item update(@RequestParam Integer id, @RequestParam(required = false) String itemName,
-                       @RequestParam(required = false) Long itemArticle ){
-        System.out.println("PostMapping(\"/update\")=>"+id);
-        return  obj.update(new Item(id,itemName,itemArticle));
+    public Item update(@RequestParam(defaultValue = "-1") Integer id,
+                       @RequestParam(defaultValue = "") String itemName,
+                       @RequestParam(defaultValue = "0") Long itemArticle,
+                       @RequestParam(defaultValue = "0") Float price ){
+        return  obj.update(new Item(id, itemName, itemArticle, price));
     }
 
-    @PostMapping("/del")
+    @DeleteMapping("/del")
     public Item delete(@RequestParam Integer id){
         return obj.delete(id);
     }
