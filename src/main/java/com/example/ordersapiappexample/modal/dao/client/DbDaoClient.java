@@ -3,8 +3,6 @@ package com.example.ordersapiappexample.modal.dao.client;
 import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Order;
 import com.example.ordersapiappexample.modal.repository.ClientRepository;
-//import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

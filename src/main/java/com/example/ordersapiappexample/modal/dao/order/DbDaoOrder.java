@@ -13,8 +13,12 @@ import java.util.Optional;
 
 @Service
 public class DbDaoOrder implements IdaoOrder {
-    @Autowired
-    private OrderRepository repository;
+    private final OrderRepository repository;
+    public static OrderRepository xxx;
+    public DbDaoOrder(OrderRepository repository) {
+        this.repository = repository;
+        xxx = repository;
+    }
 
     @Override
     public List<Order> findAll() {
@@ -39,9 +43,23 @@ public class DbDaoOrder implements IdaoOrder {
 
     @Override
     public Order update(Order item, Integer idClient) {
-        System.out.println("Order update "+item+" **** "+idClient);
+        System.out.println("update "+item+" **** "+idClient);
+        if (repository.findById(item.getId()).isPresent()){ //есть такой элемент
+            if (item.getDescript().isBlank()) // пустое знчение - переписываю
+                item.setDescript(repository.findById(item.getId()).get().getDescript());
+            boolean b = true;
+            if (idClient > -1){
+                Optional<Client> cx = DbDaoClient.xxx.findById(idClient);
+                if (cx.isPresent()) {
+                    item.setClient(cx.get());
+                    b=false;
+                }
+            }
+            if (b) item.setClient(repository.findById(item.getId()).get().getClient());
+            return repository.save(item);
+        }
         return null;
-    }
+    } //update
 
     @Override // НЕ используется
     public Order save(Order item) {  return repository.save(item);  }
