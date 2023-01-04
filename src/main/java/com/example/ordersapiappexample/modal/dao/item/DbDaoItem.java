@@ -2,7 +2,6 @@ package com.example.ordersapiappexample.modal.dao.item;
 
 import com.example.ordersapiappexample.modal.entity.Item;
 import com.example.ordersapiappexample.modal.repository.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,12 @@ import java.util.Optional;
 @Service
 public class DbDaoItem implements IDaoItem{
 
-    @Autowired
-    private ItemRepository repository;
+    private final ItemRepository repository;
+    public static ItemRepository xxx;
+    public DbDaoItem(ItemRepository repository) {
+        this.repository = repository;
+        xxx = repository;
+    }
 
     @Override
     public List<Item> findAll() {
@@ -32,7 +35,7 @@ public class DbDaoItem implements IDaoItem{
 
     @Override
     public Item update(Item item) {
-        if (! repository.findById(item.getId()).isPresent()){
+        if (repository.findById(item.getId()).isEmpty()){
             System.out.println("DbDaoItem=>isPresent()");
             return null;
         }
@@ -43,7 +46,7 @@ public class DbDaoItem implements IDaoItem{
     @Override
     public Item delete(Integer id) {
         Optional<Item> z = repository.findById(id);
-        if (! z.isPresent()) return null;
+        if (z.isEmpty()) return null;
 
         repository.deleteById(id);
         return z.get();
