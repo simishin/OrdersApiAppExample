@@ -28,11 +28,12 @@ public class ClientController {
 
     @PostMapping("/save")
     public Client save(@RequestParam String name){
-        return obj.save(new Client(name));
+        Client x = new Client(name);
+        return obj.save(x);
     }
 
     @PostMapping("/update")
-    public Client update(@RequestParam Integer id, @RequestParam(required = false) String name){
+    public Client update(@RequestParam(defaultValue = "-1") Integer id, @RequestParam(required = false) String name){
         return  obj.update(new Client(id,name));
     }
 
