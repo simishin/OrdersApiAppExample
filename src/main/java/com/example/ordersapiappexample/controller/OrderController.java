@@ -17,25 +17,26 @@ public class OrderController {
         return  obj.findAll();
     }
 
-    @GetMapping("/get")
-    public Optional<Order> findById(@RequestParam(defaultValue = "2") Integer id){
+    @GetMapping("/{id:\\d+}")
+    public Optional<Order> findById(@PathVariable Integer id){
         return obj.findById(id);
     }
 
-    @PostMapping("/save")
-    public Order save(@RequestParam(defaultValue = "Заказ ***") String descript,
+    @PostMapping("/new")
+    public Order save(@RequestParam(defaultValue = "") String descript,
                       @RequestParam(required = false) Integer idClient){
-        return obj.save(new Order(descript), idClient);
+//        return obj.save(new Order(-1,descript,null), idClient);
+        return  obj.update(new Order(-1,descript,null),idClient);
     }
-    @PostMapping("/update")
-    public Order update(@RequestParam(defaultValue = "-1") Integer id,
+    @PostMapping("/{id:\\d+}")
+    public Order update(@PathVariable  Integer id,
                         @RequestParam(defaultValue = "") String descript,
                        @RequestParam(defaultValue = "-1") Integer idClient ){
-        return  obj.update(new Order(id,descript),idClient);
+        return  obj.update(new Order(id,descript,null),idClient);
     }
 
-    @DeleteMapping("/del")
-    public Order delete(@RequestParam(required = false) Integer id){
+    @DeleteMapping("/{id:\\d+}")
+    public Order delete(@PathVariable  Integer id){
         return obj.delete(id);
     }
 
@@ -43,8 +44,4 @@ public class OrderController {
     public String ping(){
         return "Order pong";
     }
-//    @PutMapping("/ping")
-//    public String ping(){
-//        return "Order pong ****";
-//    }
 }

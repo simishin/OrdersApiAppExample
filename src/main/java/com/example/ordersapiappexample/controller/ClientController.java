@@ -20,32 +20,27 @@ public class ClientController {
         return  obj.findAll();
     }
 
-    @GetMapping("/get")
-    public Optional<Client> findById(@RequestParam(defaultValue = "2") Integer id){
-
+    @GetMapping("/{id:\\d+}")
+    public Optional<Client> findById(@PathVariable Integer id){
         return obj.findById(id);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/new")
     public Client save(@RequestParam String name){
-        Client x = new Client(name);
-        return obj.save(x);
+        return  obj.update(new Client(-1,name));
     }
 
-    @PostMapping("/update")
-    public Client update(@RequestParam(defaultValue = "-1") Integer id, @RequestParam(required = false) String name){
+    @PostMapping("/{id:\\d+}")
+    public Client update(@PathVariable  Integer id,
+                         @RequestParam(required = false) String name){
         return  obj.update(new Client(id,name));
     }
 
-    @DeleteMapping("/del")
-    public Client delete(@RequestParam Integer id){
+    @DeleteMapping("/{id:\\d+}")
+    public Client delete(@PathVariable Integer id){
         return obj.delete(id);
     }
 
     @GetMapping("/ping")
-    public String ping(){
-        return "Client" +
-                " pong";
-    }
-
+    public String ping(){ return "Client" + " pong";}
 }

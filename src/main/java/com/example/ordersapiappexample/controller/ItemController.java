@@ -45,7 +45,6 @@ public class ItemController {
                        @RequestParam(defaultValue = "0") Float price ){
         return  obj.update(new Item(id, itemName, itemArticle, price));
     }
-
     @DeleteMapping("/{id:\\d+}")
     public Item delete(@PathVariable Integer id){
         return obj.delete(id);

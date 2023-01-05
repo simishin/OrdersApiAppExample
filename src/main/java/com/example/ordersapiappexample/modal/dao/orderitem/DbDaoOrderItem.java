@@ -19,10 +19,6 @@ public class DbDaoOrderItem implements IdaoOrderItem {
 
     @Override
     public List<OrderItems> findAll() {
-//        System.out.println("OrderItems findAll");
-//        repository.
-//        List<OrderItems> y = (List<OrderItems>) repository.findAll();
-//        if(y.isEmpty()) return null;
         return (List<OrderItems>) repository.findAll();
     }
 

@@ -17,35 +17,33 @@ public class DbDaoClient implements IDaoClient {
         this.repository = repository;
         xxx = repository;
     }
-
     @Override
     public List<Client> findAll() {
         return (List<Client>) repository.findAll();
     }
     @Override
     public Optional<Client> findById(Integer id) {
-        System.out.println("+++++++ "+id);
         return repository.findById(id);
+    }
+    public static boolean isPres(Integer id){
+        return xxx.findById(id).isPresent();
     }
     @Override
     public Client save(Client item) {
-//        if ( repository.findById(item.getId()).isPresent()) return null;
         return repository.save(item);
     }
     @Override
     public Client update(Client item) {
-        if (! repository.findById(item.getId()).isPresent()){
+        if (repository.findById(item.getId()).isEmpty()){
             return repository.save(item);
         }
-//        Optional<Client> x = repository.findById(item.getId());
-//        Set<Order> y = x.get().orders();
         item.setOrders(repository.findById(item.getId()).get().orders());
         return repository.save(item);
     }
     @Override
     public Client delete(Integer id) {
         Optional<Client> item =  repository.findById(id);
-        if (! item.isPresent()) {
+        if (item.isEmpty()) {
             System.out.println("Client delete NOT fined");
             return null;}
         if (item.get().getSize() >0 ) return null; //запрет на удаление

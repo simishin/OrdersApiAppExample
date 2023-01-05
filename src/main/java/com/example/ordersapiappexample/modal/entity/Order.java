@@ -21,10 +21,6 @@ public class Order {
 
     public Order() {this(-1,"undefine", null);    }
 
-    public Order(String descript) {
-        this(-1, descript, null);
-    }
-
     public Order(Integer id, String descript, Client client) {
         this.id = id;
         this.descript = descript;
@@ -32,10 +28,36 @@ public class Order {
         this.orderItem = new HashSet<OrderItems>();
     }
 
-    public Order(Integer id, String descript) {
-        this(id, descript, null);
+    public Integer getId() {
+        return id;
     }
-
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public String getDescript() {
+        return descript;
+    }
+    public void setDescript(String descript) {
+        this.descript = descript;
+    }
+    public Client getClient() {
+        return client;
+    }
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    public Integer getSize(){return orderItem.size();}
+    public int[] getOrderItem() {
+        if (orderItem.isEmpty()) return null;
+        int[] x = new int[orderItem.size()];
+        int i=0;
+        for (OrderItems y:orderItem )  x[i++] = y.getId();
+        return x;
+    }
+    public Set<OrderItems> orderItem() { return orderItem; }
+    public void setOrderItem(Set<OrderItems> orderItem) {
+        this.orderItem = orderItem;
+    }
     @Override
     public String toString() {
         return "Order{" +
@@ -44,34 +66,5 @@ public class Order {
                 ", client=" + client +
                 '}';
     }
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescript() {
-        return descript;
-    }
-
-    public void setDescript(String descript) {
-        this.descript = descript;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Set<OrderItems> getOrderItem() {
-        return orderItem;
-    }
-    public void setOrderItem(Set<OrderItems> orderItem) {
-        this.orderItem = orderItem;
-    }
 }

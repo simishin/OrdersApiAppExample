@@ -17,26 +17,20 @@ public class DbDaoItem implements IDaoItem{
         this.repository = repository;
         xxx = repository;
     }
-
     @Override
     public List<Item> findAll() {
         return (List<Item>) repository.findAll();
     }
-
     @Override
     public Optional<Item> findById(Integer id) {
-        if (id<0) return null;
+        if (id<0) return Optional.empty();
         return repository.findById(id);
     }
     public static boolean isPres(Integer id){
         return xxx.findById(id).isPresent();
     }
-
     @Override
-    public Item save(Item item) {
-        return repository.save(item);
-    }
-
+    public Item save(Item item) { return repository.save(item); }
     @Override
     public Item update(Item elm) {
         if (repository.findById(elm.getId()).isPresent()){
@@ -49,14 +43,12 @@ public class DbDaoItem implements IDaoItem{
         }
         return repository.save(elm);
     }
-
     @Override
     public Item delete(Integer id) {
-        Optional<Item> z = repository.findById(id);
-        if (z.isEmpty()) return null;
-
+        Optional<Item> elm = repository.findById(id);
+        if (elm.isEmpty()) return null;
+        if (elm.get().getSize() >0 ) return null; //запрет на удаление
         repository.deleteById(id);
-        return z.get();
+        return elm.get();
     }
-
 }
