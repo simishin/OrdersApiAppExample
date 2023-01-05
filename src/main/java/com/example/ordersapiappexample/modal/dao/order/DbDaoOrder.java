@@ -26,18 +26,6 @@ public class DbDaoOrder implements IdaoOrder {
     public Optional<Order> findById(Integer id) {
         return repository.findById(id);
     }
-
-    @Override
-    public Order save(Order item, Integer idClient) {
-        Optional<Client> cx = DbDaoClient.xxx.findById(idClient);
-        System.out.println("************\n"+ cx);
-        if (cx.isPresent()) { //есть такой
-            item.setClient(cx.get());
-            return repository.save(item);
-        }
-        return null;
-    }
-
     @Override
     public Order update(Order item, Integer idClient) {
         System.out.println("update "+item+" **** "+idClient);
