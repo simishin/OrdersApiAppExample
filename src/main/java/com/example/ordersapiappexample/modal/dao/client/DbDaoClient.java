@@ -29,10 +29,6 @@ public class DbDaoClient implements IDaoClient {
         return xxx.findById(id).isPresent();
     }
     @Override
-    public Client save(Client item) {
-        return repository.save(item);
-    }
-    @Override
     public Client update(Client item) {
         if (repository.findById(item.getId()).isEmpty()){
             return repository.save(item);

@@ -30,8 +30,6 @@ public class DbDaoItem implements IDaoItem{
         return xxx.findById(id).isPresent();
     }
     @Override
-    public Item save(Item item) { return repository.save(item); }
-    @Override
     public Item update(Item elm) {
         if (repository.findById(elm.getId()).isPresent()){
            if (elm.getItemName().isBlank())

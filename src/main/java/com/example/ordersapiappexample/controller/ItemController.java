@@ -24,11 +24,6 @@ public class ItemController {
     public Optional<Item> findById(@PathVariable Integer id){
         return obj.findById(id);
     }
-//    @GetMapping("/get")
-//        public Optional<Item> findById(@RequestParam(defaultValue = "-1") Integer id){
-//        return obj.findById(id);
-//        }
-
     @PostMapping ("/new")
 //    @PostMapping ("/save")
     public Item update(

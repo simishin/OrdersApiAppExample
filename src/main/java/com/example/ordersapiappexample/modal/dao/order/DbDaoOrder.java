@@ -51,16 +51,6 @@ public class DbDaoOrder implements IdaoOrder {
         }
         return null;
     } //update
-    @Override // НЕ используется
-    public Order save(Order item) {  return repository.save(item);  }
-    @Override // НЕ используется
-    public Order update(Order item) {
-        if (!repository.findById(item.getId()).isPresent()) {
-            return null;
-        }
-        return repository.save(item);
-    }
-
     @Override
     public Order delete(Integer id) {
         Optional<Order> elm = repository.findById(id);
@@ -69,5 +59,4 @@ public class DbDaoOrder implements IdaoOrder {
         repository.deleteById(id);
         return elm.get();
     }
-
 }

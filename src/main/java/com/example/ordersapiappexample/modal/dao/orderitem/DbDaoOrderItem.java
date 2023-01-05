@@ -45,18 +45,6 @@ public class DbDaoOrderItem implements IdaoOrderItem {
             return repository.save(elm);}
         return null;
     }
-
-    @Override // НЕ используется
-    public OrderItems save(OrderItems item) {
-        return repository.save(item);
-    }
-    @Override // НЕ используется
-    public OrderItems update(OrderItems item) {
-        if (repository.findById(item.getId()).isEmpty()){
-            return null;
-        }
-        return repository.save(item);
-    }
     @Override
     public OrderItems delete(Integer id) {
         Optional<OrderItems> item =  repository.findById(id);
