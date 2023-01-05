@@ -2,6 +2,7 @@ package com.example.ordersapiappexample.modal.dao.client;
 
 import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Order;
+import com.example.ordersapiappexample.modal.entity.OrderItems;
 import com.example.ordersapiappexample.modal.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
@@ -38,14 +39,21 @@ public class DbDaoClient implements IDaoClient {
     }
     @Override
     public Client delete(Integer id) {
-        Optional<Client> item =  repository.findById(id);
-        if (item.isEmpty()) {
+        Optional<Client> elm =  repository.findById(id);
+        if (elm.isEmpty()) {
             System.out.println("Client delete NOT fined");
             return null;}
-        if (item.get().getSize() >0 ) return null; //запрет на удаление
+        if (elm.get().getSize() >0 ) return null; //запрет на удаление
         repository.deleteById(id);
-        Client z = item.get();
+        Client z = elm.get();
         z.setOrders( new HashSet<Order>());
         return z;
+    }
+    public static Client deleteQ(Integer id) {
+        Optional<Client> elm =  xxx.findById(id);
+        if (elm.isEmpty()) return null;
+        if (elm.get().getSize() >0 ) return null; //запрет на удаление
+        xxx.deleteById(id);
+        return elm.get();
     }
 }//class DbDaoClient

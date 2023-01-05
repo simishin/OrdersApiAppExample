@@ -1,5 +1,6 @@
 package com.example.ordersapiappexample.modal.dao.item;
 
+import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Item;
 import com.example.ordersapiappexample.modal.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -49,4 +50,11 @@ public class DbDaoItem implements IDaoItem{
         repository.deleteById(id);
         return elm.get();
     }
-}
+    public static Item deleteQ(Integer id) {
+        Optional<Item> elm =  xxx.findById(id);
+        if (elm.isEmpty()) return null;
+        if (elm.get().getSize() >0 ) return null; //запрет на удаление
+        xxx.deleteById(id);
+        return elm.get();
+    }
+}//class DbDaoItem

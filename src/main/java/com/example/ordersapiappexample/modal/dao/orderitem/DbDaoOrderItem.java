@@ -50,9 +50,16 @@ public class DbDaoOrderItem implements IdaoOrderItem {
     }
     @Override
     public OrderItems delete(Integer id) {
-        Optional<OrderItems> item =  repository.findById(id);
-        if (item.isEmpty()) return null;
+        Optional<OrderItems> elm =  repository.findById(id);
+        if (elm.isEmpty()) return null;
         repository.deleteById(id);
-        return item.get();
+        return elm.get();
+    }
+
+    public static OrderItems deleteQ(Integer id) {
+        Optional<OrderItems> elm =  xxx.findById(id);
+        if (elm.isEmpty()) return null;
+        xxx.deleteById(id);
+        return elm.get();
     }
 }

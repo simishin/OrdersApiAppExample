@@ -1,4 +1,5 @@
 package com.example.ordersapiappexample.controller;
+import com.example.ordersapiappexample.modal.dao.orderitem.DbDaoOrderItem;
 import com.example.ordersapiappexample.modal.dao.orderitem.IdaoOrderItem;
 import com.example.ordersapiappexample.modal.entity.OrderItems;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,13 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/orderItems") //префикс
 public class OrderItemController {
-    @Autowired
-    private IdaoOrderItem obj;
+    private final IdaoOrderItem obj;
+    private static IdaoOrderItem yyy;
+    public OrderItemController(IdaoOrderItem obj) {
+        this.obj = obj;
+        yyy=obj;
+    }
+
     @GetMapping("/all")
     public List<OrderItems> all(){ return  obj.findAll();     }
     @GetMapping("/{id:\\d+}")
@@ -35,6 +41,13 @@ public class OrderItemController {
     public OrderItems delete(@PathVariable  Integer id){
         return obj.delete(id);
     }
+
+    @DeleteMapping
+    public OrderItems deleteQ(@RequestParam(required = false)  Integer id){
+        System.out.println(" ***** deleteQ "+id);
+        return DbDaoOrderItem.deleteQ(id);
+    }
+
     @GetMapping("/ping")
     public String ping(){
         return "OrderItems pong";

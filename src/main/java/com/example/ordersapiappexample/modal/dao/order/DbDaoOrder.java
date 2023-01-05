@@ -21,6 +21,9 @@ public class DbDaoOrder implements IdaoOrder {
     public List<Order> findAll() {
         return (List<Order>) repository.findAll();
     }
+    public static boolean isEmpt(Integer id){
+        return xxx.findById(id).isEmpty();
+    }
 
     @Override
     public Optional<Order> findById(Integer id) {
@@ -59,4 +62,11 @@ public class DbDaoOrder implements IdaoOrder {
         repository.deleteById(id);
         return elm.get();
     }
-}
+    public static Order deleteQ(Integer id) {
+        Optional<Order> elm =  xxx.findById(id);
+        if (elm.isEmpty()) return null;
+        if (elm.get().getSize() >0 ) return null; //запрет на удаление
+        xxx.deleteById(id);
+        return elm.get();
+    }
+}//class DbDaoOrder
