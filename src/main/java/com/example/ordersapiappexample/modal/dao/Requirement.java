@@ -62,16 +62,16 @@ public class Requirement {//Требования
 //        int[] ordIt =  elm.getOrderItem();
 //        DbDaoOrderItem.xxx.deleteAllById(elm.orderItem());
 
-        for (OrderItems x : elm.orderItem()){
-            System.out.println(" ***** "+x.getId());
-            DbDaoOrderItem.xxx.delete(x);
-        }
+//        for (OrderItems x : elm.orderItem()){
+//            System.out.println(" ***** "+x.getId());
+//            DbDaoOrderItem.xxx.delete(x);
+//        }
 
-//        for (int i : elm.getOrderItem() ) {
-//            System.out.println(" ***** "+i);
+        for (int i : elm.getOrderItem() ) {
+            System.out.println(" ***** "+i);
 //            elm.orderItem().toArray().
 //
-//            DbDaoOrderItem.xxx.deleteById(i); }
+            DbDaoOrderItem.deleteQ(i); }
 //        if (elm.getSize() != 0 ) return "Не все удалилось в Расшивке";
 //        int cientId = elm.getClient().getId();
         //проверяю сколько заказов на клиенте
