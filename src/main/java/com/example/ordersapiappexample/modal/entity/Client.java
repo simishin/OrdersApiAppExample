@@ -1,7 +1,4 @@
 package com.example.ordersapiappexample.modal.entity;
-
-import org.hibernate.engine.internal.JoinSequence;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,6 +37,10 @@ public class Client {
         this.name = name;
         this.orders = new HashSet<Order>();
     }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
     @Override
     public String toString() {
         return "{" +
@@ -47,8 +48,4 @@ public class Client {
                 ", name='" + name + '\'' +
                 '}';
     }
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
 }

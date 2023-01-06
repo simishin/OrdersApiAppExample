@@ -3,7 +3,6 @@ import com.example.ordersapiappexample.modal.dao.order.IdaoOrder;
 import com.example.ordersapiappexample.modal.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +24,6 @@ public class OrderController {
     @PostMapping("/new")
     public Order save(@RequestParam(defaultValue = "") String descript,
                       @RequestParam(required = false) Integer idClient){
-//        return obj.save(new Order(-1,descript,null), idClient);
         return  obj.update(new Order(-1,descript,null),idClient);
     }
     @PostMapping("/{id:\\d+}")

@@ -1,7 +1,5 @@
 package com.example.ordersapiappexample.modal.entity;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "order_item_t")
@@ -21,20 +19,11 @@ public class OrderItems {
     public OrderItems() {
         this(-1,0,null,null);
     }
-
     public OrderItems(Integer id, Integer quantity, Item item, Order order) {
         this.id = id;
         this.quantity = quantity;
         this.item = item;
         this.order = order;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                '}';
     }
     public Integer getId() {
         return id;
@@ -60,5 +49,11 @@ public class OrderItems {
     public void setOrder(Order order) {
         this.order = order;
     }
-
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

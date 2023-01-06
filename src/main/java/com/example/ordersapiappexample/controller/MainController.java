@@ -1,9 +1,6 @@
 package com.example.ordersapiappexample.controller;
-
 import com.example.ordersapiappexample.modal.dao.Requirement;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 public class MainController {
@@ -18,12 +15,4 @@ public class MainController {
     @GetMapping("/receipt")
     public String receiptq(@RequestParam(defaultValue = "-1") Integer id){
         return Requirement.receipt(id);}
-
-    @DeleteMapping("/receipt/{id:\\d+}")
-    public String delOrder(@PathVariable Integer id){
-        return Requirement.delOrder(id); }
-
-    @DeleteMapping("/receipt")
-    public String delOrderQ(@RequestParam(required = false)  Integer id){
-        return Requirement.delOrder(id); }
-}
+}//class MainController

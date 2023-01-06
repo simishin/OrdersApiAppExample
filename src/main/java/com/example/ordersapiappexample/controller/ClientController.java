@@ -1,10 +1,8 @@
 package com.example.ordersapiappexample.controller;
-
 import com.example.ordersapiappexample.modal.dao.client.IDaoClient;
 import com.example.ordersapiappexample.modal.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 

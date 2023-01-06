@@ -62,11 +62,4 @@ public class DbDaoOrder implements IdaoOrder {
         repository.deleteById(id);
         return elm.get();
     }
-    public static Order deleteQ(Integer id) {
-        Optional<Order> elm =  xxx.findById(id);
-        if (elm.isEmpty()) return null;
-        if (elm.get().getSize() >0 ) return null; //запрет на удаление
-        xxx.deleteById(id);
-        return elm.get();
-    }
 }//class DbDaoOrder

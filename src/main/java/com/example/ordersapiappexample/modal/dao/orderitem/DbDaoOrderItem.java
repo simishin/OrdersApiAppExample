@@ -1,11 +1,9 @@
 package com.example.ordersapiappexample.modal.dao.orderitem;
-
 import com.example.ordersapiappexample.modal.dao.item.DbDaoItem;
 import com.example.ordersapiappexample.modal.dao.order.DbDaoOrder;
 import com.example.ordersapiappexample.modal.entity.OrderItems;
 import com.example.ordersapiappexample.modal.repository.OrderItemsRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +15,6 @@ public class DbDaoOrderItem implements IdaoOrderItem {
         this.repository = repository;
         xxx = repository;
     }
-
     @Override
     public List<OrderItems> findAll() {
         return (List<OrderItems>) repository.findAll();
@@ -53,13 +50,6 @@ public class DbDaoOrderItem implements IdaoOrderItem {
         Optional<OrderItems> elm =  repository.findById(id);
         if (elm.isEmpty()) return null;
         repository.deleteById(id);
-        return elm.get();
-    }
-
-    public static OrderItems deleteQ(Integer id) {
-        Optional<OrderItems> elm =  xxx.findById(id);
-        if (elm.isEmpty()) return null;
-        xxx.deleteById(id);
         return elm.get();
     }
 }

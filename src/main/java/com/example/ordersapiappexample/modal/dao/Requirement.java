@@ -1,6 +1,4 @@
 package com.example.ordersapiappexample.modal.dao;
-
-import com.example.ordersapiappexample.modal.dao.client.DbDaoClient;
 import com.example.ordersapiappexample.modal.dao.order.DbDaoOrder;
 import com.example.ordersapiappexample.modal.dao.orderitem.DbDaoOrderItem;
 import com.example.ordersapiappexample.modal.entity.Order;
@@ -14,7 +12,7 @@ import java.util.List;
 public class Requirement {//Требования
     public static String receipt(Integer id){
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = null;
+        String json;
         if (id < 0){//Вывод списка заказов {имя-номер}
             record OrdeM(int id, String descript){}
             List<OrdeM> y = new ArrayList<>();
@@ -49,35 +47,5 @@ public class Requirement {//Требования
             throw new RuntimeException(e);
         }
         return json;
-    }
-
-    public static String delOrder(Integer id){
-
-        if ( DbDaoOrder.isEmpt(id)) { //НЕТ такого
-            return "НЕТ такого заказа "+id;
-        }
-        System.out.println("************** delOrder "+ id);
-        Order elm = DbDaoOrder.xxx.findById(id).get();
-
-//        int[] ordIt =  elm.getOrderItem();
-//        DbDaoOrderItem.xxx.deleteAllById(elm.orderItem());
-
-        for (OrderItems x : elm.orderItem()){
-            System.out.println(" ***** "+x.getId());
-            DbDaoOrderItem.xxx.delete(x);
-        }
-
-//        for (int i : elm.getOrderItem() ) {
-//            System.out.println(" ***** "+i);
-//            elm.orderItem().toArray().
-//
-//            DbDaoOrderItem.xxx.deleteById(i); }
-//        if (elm.getSize() != 0 ) return "Не все удалилось в Расшивке";
-//        int cientId = elm.getClient().getId();
-        //проверяю сколько заказов на клиенте
-//        if( elm.getClient().getSize() == 1 )
-//            DbDaoClient.xxx.deleteById(elm.getClient().getId());
-//        DbDaoOrder.xxx.deleteById(id);
-        return "Цепочка удалена";
     }
 }//class Requirement

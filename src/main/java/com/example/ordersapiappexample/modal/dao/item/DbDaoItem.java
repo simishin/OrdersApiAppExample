@@ -1,17 +1,13 @@
 package com.example.ordersapiappexample.modal.dao.item;
-
-import com.example.ordersapiappexample.modal.entity.Client;
 import com.example.ordersapiappexample.modal.entity.Item;
 import com.example.ordersapiappexample.modal.repository.ItemRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 //имплементация Dao для сущнисти
 @Service
 public class DbDaoItem implements IDaoItem{
-
     private final ItemRepository repository;
     public static ItemRepository xxx;
     public DbDaoItem(ItemRepository repository) {
@@ -26,9 +22,6 @@ public class DbDaoItem implements IDaoItem{
     public Optional<Item> findById(Integer id) {
         if (id<0) return Optional.empty();
         return repository.findById(id);
-    }
-    public static boolean isPres(Integer id){
-        return xxx.findById(id).isPresent();
     }
     @Override
     public Item update(Item elm) {
@@ -48,13 +41,6 @@ public class DbDaoItem implements IDaoItem{
         if (elm.isEmpty()) return null;
         if (elm.get().getSize() >0 ) return null; //запрет на удаление
         repository.deleteById(id);
-        return elm.get();
-    }
-    public static Item deleteQ(Integer id) {
-        Optional<Item> elm =  xxx.findById(id);
-        if (elm.isEmpty()) return null;
-        if (elm.get().getSize() >0 ) return null; //запрет на удаление
-        xxx.deleteById(id);
         return elm.get();
     }
 }//class DbDaoItem

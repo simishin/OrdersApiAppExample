@@ -1,10 +1,8 @@
 package com.example.ordersapiappexample.controller;
-
 import com.example.ordersapiappexample.modal.dao.item.IDaoItem;
 import com.example.ordersapiappexample.modal.entity.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -25,14 +23,12 @@ public class ItemController {
         return obj.findById(id);
     }
     @PostMapping ("/new")
-//    @PostMapping ("/save")
     public Item update(
                        @RequestParam(required = false) String itemName,
                        @RequestParam(defaultValue = "0") Long itemArticle,
                        @RequestParam(defaultValue = "1") Float price ){
         return  obj.update(new Item(-1, itemName, itemArticle, price));
     }
-//    @PostMapping("/update")
     @PostMapping("/{id:\\d+}")
     public Item update(@PathVariable  Integer id,
                        @RequestParam(defaultValue = "") String itemName,
